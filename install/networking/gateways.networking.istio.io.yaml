@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: my-gateway
+  namespace: some-config-namespace
+spec:
+
+  # selector	map<string, string>
+  selector:
+    app: my-gateway-controller
+
+  # servers	Server[]
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "ns1/*"
+    - "ns2/foo.bar.com"
+  - port: Port
+      number: uint32
+      protocol: string
+      name: string
+    bind: string
+    hosts: string[]
+    name: string
+    tls: ServerTLSSettings
+      httpsRedirect: bool
+      mode: TLSmode  # PASSTHROUGH SIMPLE MUTUAL AUTO_PASSTHROUGH ISTIO_MUTUAL OPTIONAL_MUTUAL
+      serverCertificate: string
+      privateKey: string
+      caCertificates: string
+      credentialName: string
+      subjectAltNames: string[]
+      verifyCertificateSpki: string[]
+      verifyCertificateHash: string[]
+      minProtocolVersion: TLSProtocol
+      maxProtocolVersion: TLSProtocol  # TLS_AUTO TLSV1_0 TLSV1_1 TLSV1_2 TLSV1_3
+      cipherSuites: string[]
+

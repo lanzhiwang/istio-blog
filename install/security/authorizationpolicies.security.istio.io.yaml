@@ -1,0 +1,57 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: dry-run-example
+  annotations:
+    "istio.io/dry-run": "true"
+spec:
+
+  # selector	WorkloadSelector
+  selector:
+    matchLabels:
+      app: httpbin
+
+  # action	Action
+  # ALLOW DENY AUDIT CUSTOM
+  action: DENY
+
+  # rules	Rule[]
+  rules:
+
+    # from	From[]
+  - from:
+      source:
+        principals: string[]
+        notPrincipals: string[]
+        requestPrincipals: string[]
+        notRequestPrincipals: string[]
+        namespaces: string[]
+        notNamespaces: string[]
+        ipBlocks: string[]
+        notIpBlocks: string[]
+        remoteIpBlocks: string[]
+        notRemoteIpBlocks: string[]
+
+    # to	To[]
+    to:
+      operation:
+        hosts: string[]
+        notHosts: string[]
+        ports: string[]
+        notPorts: string[]
+        methods: string[]
+        notMethods: string[]
+        paths: string[]
+        notPaths: string[]
+
+    # when	Condition[]
+    when:
+      key: string
+      values: string[]
+      notValues: string[]
+
+  # provider	ExtensionProvider (oneof)	Specifies detailed configuration of the CUSTOM action. Must be used only with CUSTOM action.
+  # provider:
+
+
+
