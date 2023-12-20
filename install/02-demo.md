@@ -1,4 +1,8 @@
 ```bash
+# 镜像准备
+docker.io/istio/pilot:1.19.0
+docker.io/istio/proxyv2:1.19.0
+
 $ ./istioctl profile list
 Istio configuration profiles:
     ambient
